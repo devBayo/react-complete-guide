@@ -5,6 +5,7 @@ import './Expenses.css';
 function Expenses() {
   return (
     <Card className="expenses">
+      <ExpenseItem amount="500.00" title="School fees" date={new Date()} />
       <ExpenseItem
         amount="239.67"
         title="Car insurance"
