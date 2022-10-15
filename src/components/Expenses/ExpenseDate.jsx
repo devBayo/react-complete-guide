@@ -1,6 +1,6 @@
 import './ExpenseDate.css';
 
-function ExpenseDate(props) {
+const ExpenseDate = props => {
   const month = new Intl.DateTimeFormat(navigator.language, {
     month: 'long',
   }).format(props.date);
@@ -18,6 +18,6 @@ function ExpenseDate(props) {
       <div className="expense-date__day">{day}</div>
     </div>
   );
-}
+};
 
 export default ExpenseDate;
