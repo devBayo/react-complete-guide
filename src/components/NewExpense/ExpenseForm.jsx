@@ -12,11 +12,20 @@ const ExpenseForm = () => {
 
   const titleChangeHandler = event => {
     // setEnteredTitle(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
+
+    // Using one state instead
+    // setUserInput({
+    //   // This state depends on previous state
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+
+    setUserInput(userInput => {
+      // where userinput === previousState
+      return { ...userInput, enteredTitle: event.target.value };
     });
-    console.log(event.target.value);
+
+    console.log(userInput.enteredTitle);
   };
 
   const amountChangeHandler = event => {
