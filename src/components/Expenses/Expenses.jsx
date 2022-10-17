@@ -20,7 +20,6 @@ const Expenses = props => {
       />
       {props.item.map(expense => (
         <ExpenseItem
-          key={Math.random()}
           amount={expense.amount}
           title={expense.title}
           date={expense.date}
