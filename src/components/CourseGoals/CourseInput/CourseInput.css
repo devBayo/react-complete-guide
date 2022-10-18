@@ -29,5 +29,5 @@
 }
 
 .form-control.invalid label {
-  border-color: red;
+  color: red;
 }
