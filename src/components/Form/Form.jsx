@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Form.module.css';
 import Modal from '../Modal/Modal';
 
 const Form = props => {
+  const [isValid, setIsValid] = useState(true);
+  const [error, setError] = useState('');
+
   const onSubmitHandler = event => {
     event.preventDefault();
     const username = event.target['0'].value;
     const age = event.target['1'].value;
 
-    if (!username.length || !age.length) return;
+    if (!username.length || !age.length) {
+      setError('empty input');
+      return setIsValid(false);
+    }
+    if (+age < 1) {
+      setError('invalid');
+      return setIsValid(false);
+    }
+
     const newUser = {
       username,
       age: +age,
@@ -18,6 +29,10 @@ const Form = props => {
     event.target['1'].value = '';
 
     props.onAddUser(newUser);
+  };
+
+  const onCancelHandler = () => {
+    setIsValid(true);
   };
 
   return (
@@ -39,7 +54,11 @@ const Form = props => {
           Add User
         </button>
       </form>
-      <Modal />
+      <Modal display={!isValid && 'visible'} onCancel={onCancelHandler}>
+        {error === 'empty input'
+          ? 'Please enter a valid name and age (non-empty values).'
+          : ' Please enter a valid age( > 0).'}
+      </Modal>
     </div>
   );
 };
