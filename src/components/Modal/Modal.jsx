@@ -1,18 +1,23 @@
 import React from 'react';
 
-import './Modal.css';
+import styles from './Modal.module.css';
 
-const Modal = () => {
+const Modal = props => {
   return (
     <div>
-      <div className="modal">
-        <h2 className="modal-title">Invalid input</h2>
-        <div className="modal-details">
-          <p className="modal-text">Please enter a valid age({'>'}0).</p>
-          <button className="modal-button">Okay</button>
+      <div className={`${styles['modal']} ${styles[props.display]}`}>
+        <h2 className={styles['modal-title']}>Invalid input</h2>
+        <div className={styles['modal-details']}>
+          <p className={styles['modal-text']}>{props.children}</p>
+          <button onClick={props.onCancel} className={styles['modal-button']}>
+            Okay
+          </button>
         </div>
       </div>
-      <div className="overlay"></div>
+      <div
+        onClick={props.onCancel}
+        className={`${styles['overlay']} ${styles[props.display]}`}
+      ></div>
     </div>
   );
 };
