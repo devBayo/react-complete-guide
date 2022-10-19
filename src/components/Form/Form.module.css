@@ -1,8 +1,7 @@
 .form {
   padding: 1.5rem;
   background-color: #f4f4f4;
-  margin: 4rem auto;
-  width: 50rem;
+  margin: 4rem 0;
   border-radius: 1rem;
 }
 
@@ -21,6 +20,7 @@
   width: 100%;
   border: 1px solid #ccc;
   transition: border 0.2s;
+  height: 2.3rem;
 }
 
 .form-input:focus {
