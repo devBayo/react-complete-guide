@@ -1,9 +1,0 @@
-.user-item {
-  border: 1px solid #aaa;
-  padding: 0.5rem 1rem;
-  font-size: 1.4rem;
-}
-
-.user-item:not(:last-child) {
-  margin-bottom: 1rem;
-}
