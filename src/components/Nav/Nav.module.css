@@ -1,0 +1,38 @@
+.container {
+  max-width: 110rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6rem;
+}
+
+.nav {
+  background-color: #c26625;
+  color: #fff;
+}
+
+.nav h1 {
+  font-size: 3rem;
+}
+
+.nav button {
+  border: none;
+  border-radius: 1.7rem;
+  font-size: 1.6rem;
+  background-color: #86471d;
+  padding: 1.4rem 5rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nav button:hover {
+  cursor: pointer;
+}
+
+.nav button span {
+  margin-left: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 50%;
+  background-color: #c26625;
+}
