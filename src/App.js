@@ -1,8 +1,14 @@
+import Header from './components/Header/Header';
+import Meals from './components/Meals/Meals';
+import Nav from './components/Nav/Nav';
+
 function App() {
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+    <>
+      <Nav />
+      <Header />
+      <Meals />
+    </>
   );
 }
 
