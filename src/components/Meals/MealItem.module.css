@@ -1,0 +1,59 @@
+.meal {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.meal:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.meal-text > *:not(:last-child) {
+  margin-bottom: 0.3rem;
+}
+
+.meal-name {
+  font-size: 1.6rem;
+}
+
+.meal-desc {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.meal-price {
+  font-size: 1.6rem;
+  color: #b68813;
+}
+
+.meal-checkout {
+  height: 100%;
+  margin: auto 0;
+  text-align: right;
+}
+
+.meal-checkout-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+input {
+  margin-left: 1rem;
+  width: 4rem;
+}
+
+input:focus {
+  outline: none;
+}
+
+.meal-checkout-btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 1.5rem;
+  background-color: #86471d;
+  color: #fff;
+}
