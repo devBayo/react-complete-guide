@@ -1,10 +1,10 @@
 import MealItem from './MealItem';
 import classes from './Meals.module.css';
 
-const Meals = () => {
+const Meals = props => {
   const meals = [
     {
-      name: 'Suchi',
+      name: 'Sushi',
       desc: 'Finest fish and veggies',
       price: '22.99',
     },
@@ -24,11 +24,13 @@ const Meals = () => {
       price: '18.99',
     },
   ];
+
   return (
     <ul className={classes.meals}>
       {meals.map(meal => {
         return (
           <MealItem
+            onAdd={props.onAdd}
             key={meal.name}
             name={meal.name}
             desc={meal.desc}
