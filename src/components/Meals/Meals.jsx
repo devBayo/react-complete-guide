@@ -1,44 +1,12 @@
-import MealItem from './MealItem';
-import classes from './Meals.module.css';
+import AvalableMeals from './AvailableMeals';
+import MealsSummary from './MealsSummary';
 
-const Meals = props => {
-  const meals = [
-    {
-      name: 'Sushi',
-      desc: 'Finest fish and veggies',
-      price: '22.99',
-    },
-    {
-      name: 'Schnitzel',
-      desc: 'Agerman speciality!',
-      price: '16.50',
-    },
-    {
-      name: 'Barbecue Burger',
-      desc: 'American, raw, meaty',
-      price: '12.99',
-    },
-    {
-      name: 'Green Bowl',
-      desc: 'Healthy...and green...',
-      price: '18.99',
-    },
-  ];
-
+const Meals = () => {
   return (
-    <ul className={classes.meals}>
-      {meals.map(meal => {
-        return (
-          <MealItem
-            onAdd={props.onAdd}
-            key={meal.name}
-            name={meal.name}
-            desc={meal.desc}
-            price={meal.price}
-          />
-        );
-      })}
-    </ul>
+    <>
+      <MealsSummary />
+      <AvalableMeals />
+    </>
   );
 };
 
