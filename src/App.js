@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import './App.css';
 import DemoOutput from './components/Demo/DemoOutput';
@@ -9,14 +9,14 @@ function App() {
 
   console.log('App running');
 
-  const toggleParagraphHandler = () => {
+  const toggleParagraphHandler = useCallback(() => {
     setShowParagrah(prevValue => !prevValue);
-  };
+  }, []);
 
   return (
     <div className="app">
       <h1>Hi there!</h1>
-      {<DemoOutput show={showParagrah} />}
+      {<DemoOutput show={false} />}
       <Button onClick={toggleParagraphHandler}>Toggle Paragraph</Button>
     </div>
   );
