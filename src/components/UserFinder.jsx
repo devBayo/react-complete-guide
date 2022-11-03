@@ -2,34 +2,32 @@ import { Fragment, Component } from 'react';
 
 import Users from './Users';
 import classes from './UserFinder.module.css';
-
-const DUMMY_USERS = [
-  { id: 'u1', name: 'Max' },
-  { id: 'u2', name: 'Manuel' },
-  { id: 'u3', name: 'Julie' },
-];
+import UsersContext from '../store/users-context';
 
 class UserFinder extends Component {
+  static contextType = UsersContext;
+
   constructor() {
     super();
     this.state = {
-      filteredUsers: DUMMY_USERS,
+      filteredUsers: [],
       searchTerm: '',
     };
   }
 
   componentDidMount() {
     // Gets data
-    this.setState({ filteredUsers: DUMMY_USERS });
+    this.setState({ filteredUsers: this.context.users });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchTerm !== this.state.searchTerm)
+    if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: DUMMY_USERS.filter(user =>
+        filteredUsers: this.context.users.filter(user =>
           user.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
         ),
       });
+    }
   }
 
   searchChangeHandler = event => {
