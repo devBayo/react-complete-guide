@@ -12,8 +12,8 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <h1>Redux Auth</h1>
-      <nav>
-        {isAuth && (
+      {isAuth && (
+        <nav>
           <ul>
             <li>
               <a href="/">My Products</a>
@@ -25,8 +25,8 @@ const Header = () => {
               <button onClick={logoutHandler}>Logout</button>
             </li>
           </ul>
-        )}
-      </nav>
+        </nav>
+      )}
     </header>
   );
 };
