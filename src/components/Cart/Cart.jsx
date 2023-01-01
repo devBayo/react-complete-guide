@@ -4,7 +4,7 @@ import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
 
-const Cart = props => {
+const Cart = () => {
   const { cart } = useSelector(state => state);
 
   return (
