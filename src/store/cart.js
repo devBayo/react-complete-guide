@@ -2,13 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: { cartIsOpen: true, cart: [], notification: null },
+  initialState: {
+    cartIsOpen: true,
+    cart: [],
+    isChanged: false,
+    notification: null,
+  },
   reducers: {
+    replaceCart(state, action) {
+      state.cart = action.payload;
+    },
+
     toggleCart(state) {
       state.cartIsOpen = !state.cartIsOpen;
     },
 
     addToCart(state, action) {
+      state.isChanged = true;
       if (state.cart.find(product => product.name === action.payload.name)) {
         const cartItem = state.cart.find(
           product => product.name === action.payload.name
@@ -24,6 +34,7 @@ const cartSlice = createSlice({
     },
 
     removeFromCart(state, action) {
+      state.isChanged = true;
       const cartItem = state.cart.find(
         product => product.name === action.payload.name
       );
@@ -48,6 +59,30 @@ const cartSlice = createSlice({
     },
   },
 });
+
+export const FetchCartData = () => {
+  return async dispatch => {
+    try {
+      const response = await fetch(
+        'https://react-guide-http-fb145-default-rtdb.firebaseio.com/cart.json'
+      );
+
+      if (!response.ok) throw new Error('Fetching cart data failed!');
+
+      const data = await response.json();
+
+      dispatch(cartActions.replaceCart(data || []));
+    } catch (error) {
+      dispatch(
+        cartActions.showNotification({
+          status: 'error',
+          title: 'Error!',
+          message: 'Fetching cart data failed!',
+        })
+      );
+    }
+  };
+};
 
 export const sendCartData = cart => {
   return async dispatch => {
