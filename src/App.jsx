@@ -1,30 +1,31 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
-import MainHeader from './components/MainHeader';
-import ProductDetail from './components/ProductDetail';
-import Products from './pages/Products';
-import Welcome from './pages/Welcome';
+
+import Quotes from './pages/Quotes';
+import QuoteDetail from './pages/QuoteDetail';
+import NewQuote from './pages/NewQuote';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (
-    <div>
-      <MainHeader />
-      <main>
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to="/welcome" />
-          </Route>
-          <Route path="/welcome">
-            <Welcome />
-          </Route>
-          <Route path="/products" exact>
-            <Products />
-          </Route>
-          <Route path="/products/:productId">
-            <ProductDetail />
-          </Route>
-        </Switch>
-      </main>
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/quotes" />
+        </Route>
+
+        <Route path="/quotes" exact>
+          <Quotes />
+        </Route>
+
+        <Route path="/quotes/:quoteId">
+          <QuoteDetail />
+        </Route>
+
+        <Route path="/new-quote">
+          <NewQuote />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
