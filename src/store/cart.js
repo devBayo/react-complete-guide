@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState: { cartIsOpen: true, cart: [] },
+  initialState: { cartIsOpen: true, cart: [], notification: null },
   reducers: {
     toggleCart(state) {
       state.cartIsOpen = !state.cartIsOpen;
@@ -37,6 +37,14 @@ const cartSlice = createSlice({
 
         state.cart.splice(cartItemIndex, 1);
       }
+    },
+
+    showNotification(state, action) {
+      state.notification = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
     },
   },
 });
