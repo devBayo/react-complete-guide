@@ -21,7 +21,6 @@ const QuoteDetail = () => {
   useEffect(() => {
     sendRequest(quoteId);
   }, [sendRequest, quoteId]);
-  console.log(loadedQuote);
 
   if (status === 'pending') {
     return (
