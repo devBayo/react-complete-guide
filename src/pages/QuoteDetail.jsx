@@ -1,7 +1,6 @@
-import { Link, Route, useParams, useRouteMatch } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useParams } from 'react-router-dom';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
 
-import Comments from '../components/comments/Comments';
 import useHttp from '../hooks/use-http';
 import { getSingleQuote } from '../lib/api';
 import { useEffect } from 'react';
@@ -15,7 +14,6 @@ const QuoteDetail = () => {
     error,
   } = useHttp(getSingleQuote, true);
   const params = useParams();
-  const match = useRouteMatch();
   const { quoteId } = params;
 
   useEffect(() => {
@@ -41,18 +39,19 @@ const QuoteDetail = () => {
   return (
     <section>
       <HighlightedQuote text={loadedQuote.text} author={loadedQuote.author} />
-      <Route path={match.path} exact>
-        <div className="centered">
-          {/* math.url => link */}
-          <Link className="btn--flat" to={`${match.url}/comments`}>
-            Load comments
-          </Link>
-        </div>
-      </Route>
-      {/* math.path => route */}
-      <Route path={`${match.path}/comments`}>
-        <Comments />
-      </Route>
+      <div className="centered">
+        <Routes>
+          <Route
+            path=""
+            element={
+              <Link className="btn--flat" to="comments">
+                Load comments
+              </Link>
+            }
+          />
+        </Routes>
+        <Outlet />
+      </div>
     </section>
   );
 };
